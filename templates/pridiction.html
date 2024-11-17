@@ -1,0 +1,102 @@
+
+{% extends "home.html"%}
+
+{% block Business_Recommander%}
+
+
+<title>Bussiness Location Recommander</title>
+  
+
+<style>
+
+  @media only screen and (min-width: 960px) {
+    .form-prediction {
+        width: 40%; /* Adjust the width of the form */
+        float: left; /* Align the form to the left */ 
+        margin-left: 90px; /* Add some margin to the left for spacing */
+        margin-top: 150px;
+    }
+    .Ujjain_map{
+        width: 45%; /* Adjust the width of the form */
+        float: right; /* Align the form to the left */ 
+        margin-right: 80px; /* Add some margin to the left for spacing */
+        margin-top: 80px;
+    } 
+  }
+   body{
+    margin: 0 auto;
+    height: 100vh; 
+    background-color: #fff;
+    border-color:#0F52BA;
+  } 
+select {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 250px;
+    max-height: 100px; /* Set the maximum height of the container */
+    overflow-y: scroll;
+}
+  option {   
+    font-size: 20px;
+  }
+label{
+  color:blue;
+  font-size:30px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+ 
+  .form-prediction button[type="submit"] {
+    display: block;
+    background-color: #e14352;
+    color: white;
+    padding: 14px 20px;
+    margin: 0 auto;
+    margin-top: 10;
+    border: none;
+    width: fit-content;
+    opacity: 0.9;
+  }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    .form-prediction {
+        width: 364px;
+        margin: 0 auto;
+    }
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style> 
+
+<body>
+  
+  <div class="clearfix">
+    
+    <form class= "form-prediction" action="/result" method="POST" >
+        {% csrf_token %}
+      <h2 style="left-padding: 40">Find Business Location In Ujjain City</h2>
+      <label for="selectBox">Select Business Name  </label>
+      
+        <select name="Business" id="selectBox" size="5" required> 
+          {% comment %} <option value="" >- - - - - - - </option> {% endcomment %}
+          {% for name in Business_list %}
+            <option value="{{name}}">{{name}}</option>
+          {% endfor %} 
+        </select>
+       
+       <button type="submit">Submit</button> 
+    </form>
+    <div class="Ujjain_map"> 
+      {{Ujjain_map|safe}}
+    </div>  
+    
+  </div>
+  </body>
+{% endblock%}

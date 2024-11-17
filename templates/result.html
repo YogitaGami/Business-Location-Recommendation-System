@@ -1,0 +1,72 @@
+{% extends 'base_webcreation.html' %}
+
+{% block title%}Recommander result{% endblock title %}
+{% block body%}
+<style>
+/* Additional style for this template */
+body{
+    height: 100%;
+}
+h2 {
+    color: #0056b3;
+}
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0px;
+  margin-right: auto;
+  border-style: inset;
+  width: 60%;
+  border-color:#ffe700;   
+}
+@media only screen and (min-width: 960px) {
+    .result {
+        width: 35%; /* Adjust the width of the form */
+        float: left; /* Align the form to the left */ 
+        margin-left: 100px; /* Add some margin to the left for spacing */
+        margin-top: 80px;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .map {
+        width: 50%; /* Adjust the width of the form */
+        height: 100%;
+        float: right; /* Align the form to the left */ 
+        margin-right: 50px; /* Add some margin to the left for spacing */
+        margin-top: 80px;
+    }
+}
+#map_148a218411d8b7b8fcfdeac560816a31 {
+    position: relative;
+    width: 60.0%;
+    height: 100.0%;
+    left: 0.0%;
+    top: 0.0%;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+</style>
+
+<body>
+  <div class="clearfix">  
+   <div class="result">
+    <h2>Area recommended are -> </h2>
+    <hr>
+    <ul>
+    {% for area in result %}
+        <li>{{area}}</li>
+    {% endfor %}
+    </ul> 
+   </div>
+   <div class="map">
+    {{ map|safe}}
+   </div>
+  </div>
+</body>
+{% endblock%}
